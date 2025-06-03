@@ -20,20 +20,18 @@ VAST Dynamics Software
 // For WIN vs MacOS
 // XCode requires these be defined for compatibility
 #if defined _WINDOWS || defined _WINDLL
-    #include <windows.h>
-	typedef __int64 Long64_t; //Portable signed long integer 8 bytes
-	typedef unsigned __int64 ULong64_t; //Portable unsigned long integer 8 bytes
-
+#include <windows.h>
+typedef __int64 Long64_t; //Portable signed long integer 8 bytes
+typedef unsigned __int64 ULong64_t; //Portable unsigned long integer 8 bytes
 #else // MacOS
-	typedef unsigned int        UINT;
-	typedef unsigned long       DWORD;
-	typedef unsigned char		UCHAR;
-	typedef unsigned char       BYTE;
+typedef unsigned int UINT;
+typedef unsigned long DWORD;
+typedef unsigned char UCHAR;
+typedef unsigned char BYTE;
+typedef long long Long64_t; //Portable signed long integer 8 bytes
+typedef unsigned long long ULong64_t; //Portable unsigned long integer 8 byte
+#endif
 
-	typedef long long Long64_t; //Portable signed long integer 8 bytes
-	typedef unsigned long long ULong64_t;//Portable unsigned long integer 8 byte
-#endif							 
-										 
 // platform independent assert
 #ifdef _WINDOWS
 	#ifndef v_ANALYZER_NORETURN
@@ -47,9 +45,9 @@ VAST Dynamics Software
 	#define vassertfalse              vMACRO_WITH_FORCED_SEMICOLON (if (IsDebuggerPresent()) __debugbreak(); v_ANALYZER_NORETURN)
 	#define vassert(expression)       vMACRO_WITH_FORCED_SEMICOLON (if (! (expression)) jassertfalse;)
 #else
-	#define vassertfalse   // do nothing     
+	#define vassertfalse   // do nothing
     #define vassert(expression)  // do nothing
-#endif						   
+#endif
 
 //portable UNUSED macro
 #ifdef UNUSED
@@ -64,7 +62,7 @@ VAST Dynamics Software
 #include <float.h>
 //#define MAXFLOAT FLT_MAX //redefined if set here
 #ifndef _WINDOWS
-    #define MAXUINT 0xFFFFFFFF
+	#define MAXUINT 0xFFFFFFFF
 #endif
 
 //own debug log logic
@@ -74,10 +72,10 @@ VAST Dynamics Software
 	#else
 		#define VDBG(textToWrite)              DBG(textToWrite)
 	#endif
-#else 
+#else
 	#ifdef VASTLOG
 		#define VDBG(textToWrite)              JUCE_BLOCK_WITH_FORCED_SEMICOLON (juce::String tempDbgBuf; tempDbgBuf << textToWrite; juce::Logger::writeToLog(tempDbgBuf);)
-	#else 
+	#else
 		#define VDBG(textToWrite) 
 	#endif
 #endif

@@ -31,7 +31,6 @@
 //[/Headers]
 
 
-
 //==============================================================================
 /**
                                                                     //[Comments]
@@ -40,49 +39,44 @@ An auto-generated component, created by the Projucer.
 Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class VASTWaveTableEditorView  : public Component
-{
+class VASTWaveTableEditorView : public Component {
 public:
-    //==============================================================================
-    VASTWaveTableEditorView (AudioProcessorEditor *editor, AudioProcessor* processor, VASTWaveTableEditorComponent *wteditor );
-    ~VASTWaveTableEditorView() override;
+  //==============================================================================
+  VASTWaveTableEditorView(AudioProcessorEditor* editor, AudioProcessor* processor, VASTWaveTableEditorComponent* wteditor);
+  ~VASTWaveTableEditorView() override;
 
-    //==============================================================================
-    //[UserMethods]     -- You can add your own custom methods in this section.
-	VASTWaveTableEditorViewHeader* getHeader() { return c_editorHeaderComponent.get(); };
-	VASTOscilloscope* getEditorOscilloscope() {	return c_editorOscilloscope.get();	};
-	VASTViewport* getViewportPositions() { return c_viewportPositions.get(); };
-	VASTViewport* getViewportFreqDomain() { return c_viewportFreqDomain.get(); };
-    //[/UserMethods]
+  //==============================================================================
+  //[UserMethods]     -- You can add your own custom methods in this section.
+  VASTWaveTableEditorViewHeader* getHeader() { return c_editorHeaderComponent.get(); };
+  VASTOscilloscope* getEditorOscilloscope() { return c_editorOscilloscope.get(); };
+  VASTViewport* getViewportPositions() { return c_viewportPositions.get(); };
+  VASTViewport* getViewportFreqDomain() { return c_viewportFreqDomain.get(); };
+  //[/UserMethods]
 
-    void paint (juce::Graphics& g) override;
-    void resized() override;
-    void visibilityChanged() override;
-
-
-
+  void paint(juce::Graphics& g) override;
+  void resized() override;
+  void visibilityChanged() override;
 private:
-    //[UserVariables]   -- You can add your own custom variables in this section.
-	VASTAudioProcessorEditor* myEditor = nullptr;
-	VASTAudioProcessor* myProcessor = nullptr;
-	VASTWaveTableEditorComponent* myWTEditor = nullptr;
+  //[UserVariables]   -- You can add your own custom variables in this section.
+  VASTAudioProcessorEditor* myEditor = nullptr;
+  VASTAudioProcessor* myProcessor = nullptr;
+  VASTWaveTableEditorComponent* myWTEditor = nullptr;
 
-	friend class VASTWaveTableEditorComponent;
-	friend class VASTPositionViewport;
-	friend class VASTFreqDomainViewport;
-    //[/UserVariables]
+  friend class VASTWaveTableEditorComponent;
+  friend class VASTPositionViewport;
+  friend class VASTFreqDomainViewport;
+  //[/UserVariables]
 
-    //==============================================================================
-    std::unique_ptr<VASTOscilloscope> c_editorOscilloscope;
-    std::unique_ptr<VASTViewport> c_viewportPositions;
-    std::unique_ptr<VASTViewport> c_viewportFreqDomain;
-    std::unique_ptr<VASTWaveTableEditorViewHeader> c_editorHeaderComponent;
+  //==============================================================================
+  std::unique_ptr<VASTOscilloscope> c_editorOscilloscope;
+  std::unique_ptr<VASTViewport> c_viewportPositions;
+  std::unique_ptr<VASTViewport> c_viewportFreqDomain;
+  std::unique_ptr<VASTWaveTableEditorViewHeader> c_editorHeaderComponent;
 
 
-    //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VASTWaveTableEditorView)
+  //==============================================================================
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VASTWaveTableEditorView)
 };
 
 //[EndFile] You can add extra defines here...
 //[/EndFile]
-
